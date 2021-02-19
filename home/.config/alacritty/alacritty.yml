@@ -1,0 +1,27 @@
+import:
+  - ~/.config/alacritty/dracula.yml
+
+shell:
+  program: fish
+
+font:
+  size: 14.0
+
+  normal:
+    family: Source Code Pro
+    style: Regular
+
+  bold:
+    family: Source Code Pro
+    style: Bold
+
+  italic:
+    family: Source Code Pro
+    style: Italic
+
+  bold_italic:
+    family: Source Code Pro
+    style: Bold Italic
+
+window:
+  startup_mode: Maximized
