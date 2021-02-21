@@ -7,6 +7,7 @@ let g:ale_linters = {
 \   'python': ['flake8', 'mypy', 'pyright'],
 \   'rust': ['analyzer', 'cargo', 'rustc', 'rls'],
 \}
+
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'cpp': ['clang-format'],
@@ -16,12 +17,15 @@ let g:ale_fixers = {
 " \   'javascript': ['prettier'],
 " \   'css': ['prettier'],
 " \   'html': ['prettier']
+
 " let g:ale_fix_on_save = 1
 let g:ale_sign_column_always = 1
 nmap <silent> <F2> <Plug>(ale_rename)
 
 " Syntax highlighting
 Plug 'sheerun/vim-polyglot'
+" Show tabs correctly in rust
+let g:rust_recommended_style = 0
 
 Plug 'kylelaker/riscv.vim'
 Plug 'oraculo666/vim-m80'
