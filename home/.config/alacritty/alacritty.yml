@@ -8,19 +8,19 @@ font:
   size: 14.0
 
   normal:
-    family: Source Code Pro
+    family: monospace
     style: Regular
 
   bold:
-    family: Source Code Pro
+    family: monospace
     style: Bold
 
   italic:
-    family: Source Code Pro
+    family: monospace
     style: Italic
 
   bold_italic:
-    family: Source Code Pro
+    family: monospace
     style: Bold Italic
 
 window:
