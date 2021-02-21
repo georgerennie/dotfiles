@@ -114,3 +114,7 @@ function uwu
 end
 
 set fish_color_command blue
+
+set -gx EDITOR nvim
+
+thefuck --alias | source
