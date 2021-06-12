@@ -4,9 +4,11 @@ call plug#begin('~/.vim/plugged')
 Plug 'dense-analysis/ale'
 let g:ale_linters = {
 \   'systemverilog': ['verilator', 'hdl-checker'],
-\   'python': ['flake8', 'mypy', 'pyright'],
-\   'rust': ['analyzer', 'cargo', 'rustc', 'rls'],
+\   'python': ['pyls'],
+\   'rust': ['analyzer', 'cargo', 'rls'],
 \}
+" \   'cpp': ['clang++'],
+" \   'python': ['flake8', 'mypy', 'pyright', 'pylint', 'pyls'],
 
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
@@ -26,6 +28,7 @@ nmap <silent> <F2> <Plug>(ale_rename)
 Plug 'sheerun/vim-polyglot'
 " Show tabs correctly in rust
 let g:rust_recommended_style = 0
+let g:haskell_indent_disable = 1
 
 Plug 'kylelaker/riscv.vim'
 Plug 'oraculo666/vim-m80'
@@ -65,6 +68,9 @@ set signcolumn=yes
 " Auto closing brackets
 " Plug 'jiangmiao/auto-pairs'
 
+" Read editorconfig files where possible
+Plug 'editorconfig/editorconfig-vim'
+
 " Detect indents
 Plug 'ciaranm/detectindent'
 autocmd BufReadPost * :DetectIndent
@@ -75,6 +81,7 @@ set autoindent
 set tabstop=4
 set shiftwidth=4
 set noexpandtab
+autocmd FileType haskell :set expandtab
 
 " Commenting shortcut
 Plug 'preservim/nerdcommenter'
@@ -132,6 +139,10 @@ set colorcolumn=80
 
 " wrap left and right keys at ends of lines
 set whichwrap+=<,>,[,],h,l
+
+" dont wrap text
+set nowrap
+set formatoptions-=t
 
 " Show relative line numbers with the current line absolute
 set number relativenumber

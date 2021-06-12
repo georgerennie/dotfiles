@@ -1,0 +1,5 @@
+.ccls-cache/
+.cache/
+__pycache__/
+.mypy_cache/
+node_modules/
