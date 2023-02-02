@@ -6,6 +6,7 @@ let g:ale_linters = {
 \   'systemverilog': ['verilator', 'hdl-checker'],
 \   'python': ['pyls'],
 \   'rust': ['analyzer', 'cargo', 'rls'],
+\   'haskell': ['hls'],
 \}
 " \   'cpp': ['clang++'],
 " \   'python': ['flake8', 'mypy', 'pyright', 'pylint', 'pyls'],
@@ -36,9 +37,15 @@ Plug 'VelkyVenik/vim-avr'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'dag/vim-fish'
 Plug 'lervag/vimtex'
+let g:vimtex_view_general_viewer = 'okular'
+let g:vimtex_compiler_latexmk = {'build_dir' : 'build'}
 Plug 'pboettch/vim-cmake-syntax'
-" Plug 'nachumk/systemverilog.vim'
+Plug 'nachumk/systemverilog.vim'
 autocmd BufNewFile,BufRead *.v :set filetype=systemverilog
+Plug 'supercollider/scvim'
+Plug 'derekwyatt/vim-scala'
+Plug 'gameboo/vim-sail'
+Plug 'harenome/vim-mipssyntax'
 
 " Autocomplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -64,6 +71,9 @@ Plug 'airblade/vim-gitgutter'
 " Always show gutter so it doesnt jump onto the screen when git gutter detects
 " something
 set signcolumn=yes
+
+" git fugitive
+Plug 'tpope/vim-fugitive'
 
 " Auto closing brackets
 " Plug 'jiangmiao/auto-pairs'

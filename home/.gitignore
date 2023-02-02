@@ -3,3 +3,6 @@
 __pycache__/
 .mypy_cache/
 node_modules/
+.metals/
+compile_commands.json
+*.plist

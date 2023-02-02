@@ -8,7 +8,7 @@ function fish_greeting
     echo " 🌽🦧🚀"
 end
 
-set FISH_EMOJI_LIST 🤣😆😋😎😙😗🙄😣😮🥱😫😌😛🤤😔😬😱🤠\
+set FISH_EMOJI_LIST 🥺🤣😆😋😎😙😗🙄😣😮🥱😫😌😛🤤😔😬😱🤠\
 👻🙈🙉🙊🐵🦍🦧🐒🐈🐫🐪🐐🐑🐏🐖🦥🐬🐳🐋🐟🐠🐡🦐🦑🐙🦞🦀🐞\
 👀👄👅🎈🎆🎇🧨✨🎉🎊🎃🎵🎶🎸🪕🎻🎹🥁🍕🥓🌈🌞🧡💛💚💙💜🤎\
 💖💦💤
@@ -118,3 +118,6 @@ set fish_color_command blue
 set -gx EDITOR nvim
 
 thefuck --alias | source
+
+# opam configuration
+source /home/george/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
