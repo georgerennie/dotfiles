@@ -5,7 +5,7 @@ shell:
   program: fish
 
 font:
-  size: 10.0
+  size: 16.0
 
   normal:
     family: monospace

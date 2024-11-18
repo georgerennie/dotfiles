@@ -75,23 +75,15 @@ if test -d /d/code_ee/
     abbr -a -g ce "cd /d/code_ee/"
 end
 
+# If on newer machines with code_ee in home
+if test -d ~/code_ee/
+    abbr -a -g ce "cd ~/code_ee/"
+end
+
 # Created a temporary directory and cd to it
 function mktemp
     cd (command mktemp -d)
 end
-
-# Git commit with message
-function gcm
-    git commit -m "$argv"
-end
-
-# Use python3 as default python
-if type -q python3
-    abbr -a -g python python3
-end
-
-# hmmmm
-abbr -a -g maths math
 
 # map :x and :q to exit in fish lol
 function :x

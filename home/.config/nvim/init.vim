@@ -4,11 +4,12 @@ call plug#begin('~/.vim/plugged')
 Plug 'dense-analysis/ale'
 let g:ale_linters = {
 \   'systemverilog': ['verilator', 'hdl-checker'],
-\   'python': ['pyls'],
-\   'rust': ['analyzer', 'cargo', 'rls'],
+\   'python': ['jedils'],
 \   'haskell': ['hls'],
+\   'cpp': ['clangd', 'clang-tidy', 'clang-check', 'ccls'],
 \}
-" \   'cpp': ['clang++'],
+" \   'rust': ['analyzer', 'cargo', 'rls'],
+" \   'python': ['pyls'],
 " \   'python': ['flake8', 'mypy', 'pyright', 'pylint', 'pyls'],
 
 let g:ale_fixers = {
@@ -24,12 +25,16 @@ let g:ale_fixers = {
 " let g:ale_fix_on_save = 1
 let g:ale_sign_column_always = 1
 nmap <silent> <F2> <Plug>(ale_rename)
+let g:ale_completion_enabled = 1
+let g:ale_completion_delay = 1
 
 " Syntax highlighting
 Plug 'sheerun/vim-polyglot'
 " Show tabs correctly in rust
 let g:rust_recommended_style = 0
 let g:haskell_indent_disable = 1
+" Stop polyglot doing annoying indenting
+autocmd BufEnter * set indentexpr=
 
 Plug 'kylelaker/riscv.vim'
 Plug 'oraculo666/vim-m80'
@@ -46,6 +51,12 @@ Plug 'supercollider/scvim'
 Plug 'derekwyatt/vim-scala'
 Plug 'gameboo/vim-sail'
 Plug 'harenome/vim-mipssyntax'
+
+Plug 'georgerennie/vim-svelte'
+let g:svelte_indent_script = 0
+let g:svelte_indent_style = 0
+
+autocmd BufNewFile,BufRead *.ys :set filetype=sh
 
 " Autocomplete
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
@@ -100,9 +111,10 @@ let g:NERDDefaultAlign='left'
 let g:NERDAltDelims_c=1
 let g:NERDCustomDelimiters = {
 \'verilog': { 'left': '//' },
+\'c': { 'left': '//' },
 \'m80': { 'left': ';' },
 \'fortran': { 'left': '*' },
-\'python': { 'left': '#' }
+\'python': { 'left': '#' },
 \}
 
 " Brackets colouriser
