@@ -43,14 +43,21 @@ Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'dag/vim-fish'
 Plug 'lervag/vimtex'
 let g:vimtex_view_general_viewer = 'okular'
-let g:vimtex_compiler_latexmk = {'build_dir' : 'build'}
+let g:vimtex_compiler_latexmk = {'aux_dir' : 'build', 'out_dir' : 'build'}
 Plug 'pboettch/vim-cmake-syntax'
 Plug 'nachumk/systemverilog.vim'
 autocmd BufNewFile,BufRead *.v :set filetype=systemverilog
-Plug 'supercollider/scvim'
 Plug 'derekwyatt/vim-scala'
 Plug 'gameboo/vim-sail'
 Plug 'harenome/vim-mipssyntax'
+Plug 'tidalcycles/vim-tidal'
+Plug 'davidgranstrom/scnvim'
+
+Plug 'whonore/Coqtail'
+Plug 'Julian/lean.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'neovim/nvim-lspconfig', { 'tag': 'v2.0.0' }
+autocmd BufNewFile,BufRead *.lean :set filetype=lean
 
 Plug 'georgerennie/vim-svelte'
 let g:svelte_indent_script = 0
@@ -93,16 +100,15 @@ Plug 'tpope/vim-fugitive'
 Plug 'editorconfig/editorconfig-vim'
 
 " Detect indents
-Plug 'ciaranm/detectindent'
-autocmd BufReadPost * :DetectIndent
-let g:detectindent_preferred_expandtab = 0
-let g:detectindent_preferred_indent = 4
+Plug 'tpope/vim-sleuth'
 " Use tabs displayed as 4 spaces by default
 set autoindent
 set tabstop=4
 set shiftwidth=4
 set noexpandtab
 autocmd FileType haskell :set expandtab
+autocmd FileType lean :set ts=2 sw=2 et
+let g:sleuth_lean_heuristics = 0
 
 " Commenting shortcut
 Plug 'preservim/nerdcommenter'
@@ -115,6 +121,7 @@ let g:NERDCustomDelimiters = {
 \'m80': { 'left': ';' },
 \'fortran': { 'left': '*' },
 \'python': { 'left': '#' },
+\'tidal': { 'left': '--' },
 \}
 
 " Brackets colouriser
@@ -135,6 +142,31 @@ syntax on
 if (has("termguicolors"))
     set termguicolors
 endif
+
+lua << EOF
+local scnvim = require 'scnvim'
+local map = scnvim.map
+local map_expr = scnvim.map_expr
+
+scnvim.setup({
+  keymaps = {
+    ['<M-e>'] = map('editor.send_line', {'i', 'n'}),
+    ['<C-e>'] = {
+      map('editor.send_block', {'i', 'n'}),
+      map('editor.send_selection', 'x'),
+    },
+    ['<CR>'] = map('postwin.toggle'),
+    ['<M-CR>'] = map('postwin.toggle', 'i'),
+    ['<M-L>'] = map('postwin.clear', {'n', 'i'}),
+    ['<C-k>'] = map('signature.show', {'n', 'i'}),
+    ['<F12>'] = map('sclang.hard_stop', {'n', 'x', 'i'}),
+    ['<leader>st'] = map('sclang.start'),
+    ['<leader>sk'] = map('sclang.recompile'),
+    ['<F1>'] = map_expr('s.boot'),
+    ['<F2>'] = map_expr('s.meter'),
+  },
+})
+EOF
 
 colorscheme night-owl
 highlight Comment guifg=#efabb1
