@@ -189,7 +189,7 @@ inoremap jk <Esc>
 " nnoremap t :tabnew<CR>
 
 " put a line at column 80
-set colorcolumn=80
+set colorcolumn=100
 
 " wrap left and right keys at ends of lines
 set whichwrap+=<,>,[,],h,l
