@@ -1,11 +1,11 @@
 function fish_greeting
-    echo -n "🚀🦧🌽 "
+    echo -n "🦧🌽 "
     set_color green
     echo -n (date "+%H:%M: ")
     set_color blue -u
     echo -n (pwd)
     set_color normal
-    echo " 🌽🦧🚀"
+    echo " 🌽🦧"
 end
 
 set FISH_EMOJI_LIST 🥺🤣😆😋😎😙😗🙄😣😮🥱😫😌😛🤤😔😬😱🤠\
@@ -80,29 +80,22 @@ if test -d ~/code_ee/
     abbr -a -g ce "cd ~/code_ee/"
 end
 
+# Or machines with ~/projects
+if test -d ~/projects
+    abbr -a -g ce "cd ~/projects/"
+end
+
 # Created a temporary directory and cd to it
 function mktemp
     cd (command mktemp -d)
 end
 
-# map :x and :q to exit in fish lol
+# map :x and :q to exit in fish
 function :x
     exit
 end
 function :q
     exit
-end
-
-# Add cless function to pipe the output of the following command into coloured
-# less. doesnt expand abbreviations correctly 😢
-if type -q less && type -q unbuffer
-    function cless
-        unbuffer $argv | less -R
-    end
-end
-
-function uwu
-    $argv | sed "s/[lr]/w/g;s/n\([aeiou]\)/ny\1/g;s/v/ff/g"
 end
 
 set fish_color_command blue
